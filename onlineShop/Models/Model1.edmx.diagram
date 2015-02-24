@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="51ee8dc07af34811af2c38d4fb990382" Name="Diagram1">
+        <EntityTypeShape EntityType="Database1Model.admin" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.contactU" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.user" Width="1.5" PointX="8.375" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.cart" Width="1.5" PointX="4.25" PointY="6.625" />
+        <EntityTypeShape EntityType="Database1Model.order" Width="1.5" PointX="0.875" PointY="6.5" />
+        <EntityTypeShape EntityType="Database1Model.orderDetail" Width="1.5" PointX="3.375" PointY="3.5" />
+        <EntityTypeShape EntityType="Database1Model.product" Width="1.5" PointX="0.625" PointY="3.25" />
+        <AssociationConnector Association="Database1Model.FK_cart_ToTable" />
+        <AssociationConnector Association="Database1Model.FK_orderDetail_ToTable" />
+        <AssociationConnector Association="Database1Model.FK_orderDetail_ToTable_1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,62 @@
+@{
+    ViewBag.Title = "AdminHome";
+Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@section tab 
+{
+    <ul class="menu">
+                         <li><a href="/Admin/AdminHome" class="nav1 style4">  Home </a></li>
+                         <li class="divider"></li>
+                         <li><a href="/Admin/AddProduct" class="nav2 style4">Add Products</a></li>                      
+                         <li class="divider"></li>        
+                         <li><a href="/Admin/viewComments" class="nav6 style4">View Comments</a></li>                        
+                         <li class="divider"></li>                         
+                         <li><a href="/Account/Logout" class="nav4 style4">Logout</a></li>
+                         <li class="divider"></li>
+                    </ul>
+
+             <div class="right_menu_corner"></div>
+
+}
+@section left
+{
+    <div class="left_content">
+    <div class="title_box">Selling Reports</div>
+    
+        <ul class="left_menu">
+        <li class="even"><a href="#">Today Report</a></li>
+         <li class="odd"><a href="#">Weekly Reports</a></li>
+        </ul> 
+}
+        @model  List<onlineShop.Models.product>
+        <div class="center_content">
+
+          
+
+            @foreach (var product in Model)
+            {
+                <div class="prod_box">
+                    <div class="top_prod_box"></div>
+                    <div class="center_prod_box">
+                        <div class="product_title"> @product.productName</div>
+                        <div class="product_img"><img src="@product.productImage"  border="0" /></div>
+                        <div class="product_comapny"><h3>Company </h3> @product.productCompany</div>
+                        <div class="prod_price"><h3>Price </h3> @product.productPrice</div>
+                        <div class="prod_quantity"><h3>Quantity </h3>@product.productQuantity</div>
+                        <div class="prod_color"> <h3>Color</h3>@product.productColor</div>
+                    </div>
+
+                    <div class="bottom_prod_box"></div>
+                    <div class="prod_details_tab">
+                        <b>&nbsp @Html.ActionLink("Edit", "UpdateProduct", new { id = product.productId })</b> 
+                        &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp
+                        <b>@Html.ActionLink("Delete", "DeleteProduct", new { id = product.productId })</b>
+                    </div>
+                </div>
+            }
+</div>
+   
+   	   
+
+   
+   

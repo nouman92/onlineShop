@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "updateProduct";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>updateProduct</h2>
+@section tab
+{
+    <ul class="menu">
+        <li><a href="/Admin/AdminHome" class="nav1 style4">  Home </a></li>
+        <li class="divider"></li>
+        <li><a href="/Admin/AddProduct" class="nav2 style4">Add Products</a></li>
+
+        <li class="divider"></li>
+        <li><a href="/Admin/viewComments" class="nav6 style4">View Comments</a></li>
+        <li class="divider"></li>
+        <li><a href="/Account/Logout" class="nav4 style4">Logout</a></li>
+        <li class="divider"></li>
+    </ul>
+
+    <div class="right_menu_corner"></div>
+
+}
+@section left
+{
+    <div class="left_content">
+    <div class="title_box">Selling Reports</div>
+
+    <ul class="left_menu">
+        <li class="even"><a href="#">Today Report</a></li>
+        <li class="odd"><a href="#">Weekly Reports</a></li>
+    </ul>
+}
+@model onlineShop.Models.product
+<div>
+    @using (Html.BeginForm("UpdateProductDB", "Admin", FormMethod.Post))
+    {
+        <table width="500" border="0">
+           
+            <tr>
+                <th width="153" height="50" scope="row">      <h3>@Html.LabelFor(m => m.productName)</h3></th>
+                <td width="252" height="50">@Html.TextBoxFor(m => m.productName)</td>
+                <td width="81" height="50">&nbsp;</td>
+            </tr>
+            <tr>
+                <th width="153" height="50" scope="row">      <h3>@Html.LabelFor(m => m.productCompany)</h3></th>
+                <td width="252" height="50">@Html.TextBoxFor(m => m.productCompany)</td>
+                <td width="81" height="50">&nbsp;</td>
+            </tr>
+            <tr>
+                <th width="153" height="50" scope="row">      <h3>@Html.LabelFor(m => m.productPrice)</h3></th>
+                <td width="252" height="50">@Html.TextBoxFor(m => m.productPrice)</td>
+                <td width="81" height="50">&nbsp;</td>
+            </tr>
+            <tr>
+                <th width="153" height="50" scope="row">      <h3>@Html.LabelFor(m => m.productQuantity)</h3></th>
+                <td width="252" height="50">@Html.TextBoxFor(m => m.productQuantity)</td>
+                <td width="81" height="50">&nbsp;</td>
+            </tr>
+            <tr>
+                <th width="153" height="50" scope="row">      <h3>@Html.LabelFor(m => m.productColor)</h3></th>
+                <td width="252" height="50">@Html.TextBoxFor(m => m.productColor)</td>
+                <td width="81" height="50">&nbsp;</td>
+            </tr>
+            <tr>
+                <td><input type="submit" name="updatebutton" value="Update Item" /></td>
+            </tr>
+        </table>
+    }
+    <div>
+        <h2>@Html.ActionLink("Back to MAin MEnu", "AdminHome")</h2>
+    </div>
+</div> <!-- end of templatmeo_content -->

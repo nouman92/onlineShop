@@ -1,0 +1,125 @@
+﻿@{
+    ViewBag.Title = "SignUp";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+@section tab{
+    <div id="menu_tab">
+        <div class="left_menu_corner"></div>
+        <ul class="menu">
+            <li><a href="/Home/index" class="nav1 style4">  Home </a></li>
+            <li class="divider"></li>
+            <li><a href="/Account/SignUp" class="nav4 style4">Sign Up</a></li>
+            <li class="divider"></li>
+            <li><a href="/Home/About" class="nav5 style4">About </a></li>
+            <li class="divider"></li>
+            <li><a href="/Home/contact" class="nav6 style4">Contact Us</a></li>
+            <li class="divider"></li>
+            <li><a href="/Account/Login" class="nav4 style4">Login</a></li>
+            <li class="divider"></li>
+        </ul>
+
+
+    </div><!-- end of menu tab -->
+}
+@section left {
+    <div class="left_content">
+        <div class="title_box">Categories</div>
+
+        <ul class="left_menu">
+            <li class="even"><a href="/Home/Laptops">Laptop</a></li>
+            <li class="odd"><a href="/Home/WebCam">Webcam</a></li>
+
+            <li class="even"><a href="/Home/Mobile">Mobile Phones</a></li>
+        </ul>
+
+
+}
+        @model onlineShop.Models.user
+                @using (Html.BeginForm("createAccount", "Account", FormMethod.Post))
+        {@Html.ValidationSummary(false)
+            <div class="center_content">
+                <div class="center_title_bar">Sign Up</div>
+                <div class="prod_box_big">
+                    <div class="top_prod_box_big"></div>
+                    <div class="center_prod_box_big">
+                        <div class="contact_form">
+                            <div class="form_row" >
+                                <strong>@Html.LabelFor(Model=>Model.First_Name)</strong>
+                                @Html.TextBoxFor(Model=>Model.First_Name,new{id="first_name",required="required"})
+                            </div>
+                            <div class="form_row">
+                                <strong> @Html.LabelFor(Model=>Model.Last_Name)</strong>
+                                @Html.TextBoxFor(Model=>Model.Last_Name, new{id="last_name"})
+                            </div>
+                            <div class="form_row">
+                                <strong> @Html.LabelFor(Model => Model.Email)</strong>
+                                @Html.TextBoxFor(Model => Model.Email, new { Type = "Email", id = "userName", name = "userName", required = "required" })
+                                <input type="button" id="b1" value="Check" />
+                                <div id="checking">Checking...</div>
+                                <div id="result"></div>
+                                @Scripts.Render("~/bundles/jquery")
+                                <script>
+                                    $(document).ready(function (){
+                                   
+                                        $('#checking').hide();
+                                        $('#b1').click(function () {
+                                            var userName = $('#userName').val();
+                                            alert('User Name =' + userName);
+                                            $('#checking').show();
+                                            $.getJSON("/Account/checkUserName?name=" + userName, function (data) {
+                                                $('#checking').hide();
+
+                                                if(data)
+                                                {
+                                                    $('#result').text(userName + " user already exist");
+                                                }
+                                                else
+                                                {
+                                                    $('#result').text(userName + "  is available ");
+                                                }
+                                            });
+                                        });
+                                    });
+                                </script>
+                            </div>
+                            <div class="form_row">
+                                <strong> @Html.LabelFor(Model => Model.Password)</strong>
+                                @Html.TextBoxFor(Model => Model.Password, new { Type="Password"})
+                            </div>
+                            <div class="form_row">
+                                <strong> @Html.LabelFor(Model => Model.Address)</strong>
+                                @Html.TextBoxFor(Model => Model.Address)
+                            </div>
+                            <div class="form_row">
+                                <input name="submit" type="submit" value="Sign Up" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom_prod_box_big"></div>
+                    </div>
+                </div>
+                 }
+                    <div>
+                        @Html.ActionLink("Back To Home" , "Index" , "Home")
+                    </div>
+
+                    @section Scripts{
+                        @Scripts.Render("~/bundles/jqueryval")
+                    }
+                    @section cartTab{
+                        <div class="right_content">
+                            <div class="shopping_cart">
+                                <div class="cart_title style5">Shopping cart</div>
+
+                                <div class="cart_details">
+                                    <h2>View Cart</h2>
+                                    <br />
+                                    @* <span class="border_cart"></span>
+                                    Total: <span class="price">350$</span>*@
+                                </div>
+
+                                <div class="cart_icon"><a href="/Account/Login" title="header=[Checkout] body=[&nbsp;] fade=[on]"><img src="~/images/shoppingcart.png" alt="" title="" width="48" height="48" border="0" /></a></div>
+
+                            </div>
+                    }
